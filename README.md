@@ -18,11 +18,12 @@ Python 3.8 ou superior instalado.
 
 # COMO RODAR      
 Clone o repositório em sua máquina local.        
-Certifique-se de que o arquivo de dados dataset_cozinha_jacquin_200.csv está no mesmo diretório dos scripts.      
 Executar no terminal o comando: cd [caminho para o projeto]      
-Executar no terminal o comando: python main.py        
-Na primeira execução, o sistema perguntará sobre a criação do banco de dados. Escolha a Opção 2 (Recriar tudo do zero) para que o sistema leia o arquivo .csv, empacote os dados usando struct e crie os arquivos de paginação receitas.bin e indice_arvore_b.bin.      
-Navegue pelo menu interativo digitando os números correspondentes às opções.      
+Executar no terminal o comando: python main.py (ou python3 main.py para Linux/macOS).  
+Na primeira execução, o programa vai construir a Árvore B e salvá-la no disco.
+Navegue pelo menu interativo digitando os números correspondentes às opções.
+Nas execuções seguintes, o sistema perguntará sobre a criação do banco de dados. Escolha a Opção 1 para manter o mesmo banco ou a Escolha a Opção 2 (Recriar tudo do zero) para que o sistema leia o arquivo .csv, empacote os dados usando struct e crie os arquivos de paginação receitas.bin e indice_arvore_b.bin.      
+      
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
