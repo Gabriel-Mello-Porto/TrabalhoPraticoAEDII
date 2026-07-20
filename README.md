@@ -89,7 +89,7 @@ O que acontece durante esse processo: O sistema navegará pelo arquivo indice_ar
 
 ## 5) Módulo 5: Oficina de Produção (Grafos e Dependências)
 Utiliza Grafos Direcionados Acíclicos (DAG).
-Para mapear as dependências entre receitas (ex: um preparo intermediário como caldo precisa ser feito antes da finalização do prato), as receitas viram vértices e as dependências viram arestas direcionadas. Foi implementada a Busca em Profundidade (DFS) para rastrear todo o caminho e detectar inconsistências ou ciclos (deadlocks operacionais onde A depende de B e B depende de A). Quando não há ciclos, o sistema usa o Algoritmo de Kahn para realizar a Ordenação Topológica, processando os vértices com base em seus graus de entrada para gerar uma sequência linear e perfeitamente viável de produção para a equipe.
+Para mapear as dependências entre receitas (ex: um preparo intermediário como caldo precisa ser feito antes da finalização do prato), as receitas viram vértices e as dependências viram arestas direcionadas. Foi implementada a Busca em Profundidade (DFS) para rastrear todo o caminho e detectar inconsistências ou ciclos (deadlocks operacionais onde A depende de B e B depende de A). Quando não há ciclos, o sistema usa o algoritmo de Ordenação Topológica para gerar uma sequência linear e viável de produção para a equipe.
 
 ## 6) Módulo 6: Menu Degustação VIP (Programação Dinâmica)
 Utiliza a lógica do Problema da Mochila (Knapsack 0/1).
