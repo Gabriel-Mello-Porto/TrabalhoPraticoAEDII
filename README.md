@@ -83,6 +83,25 @@ Para superar a dificuldade com o algoritmo de Split, implementamos a função _d
 O que acontece durante esse processo: O sistema navegará pelo arquivo indice_arvore_b.bin pulando blocos de bytes matematicamente. Ao achar a chave, ele resgatará o offset físico, saltará para esse exato byte no arquivo receitas.bin e extrairá a string JSON apenas daquela receita, provando a leitura I/O sob demanda sem carregar o banco de dados na RAM.
 
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# ESTRUTURAS E ALGORITMOS AVANÇADOS (PARTE 2 DO TRABALHO)
 
+## 5) Módulo 5: Oficina de Produção (Grafos e Dependências)
+Utiliza Grafos Direcionados Acíclicos (DAG).
+Para mapear as dependências entre receitas (ex: um preparo intermediário como caldo precisa ser feito antes da finalização do prato), as receitas viram vértices e as dependências viram arestas direcionadas. Foi implementada a Busca em Profundidade (DFS) para rastrear todo o caminho e detectar inconsistências ou ciclos (deadlocks operacionais onde A depende de B e B depende de A). Quando não há ciclos, o sistema usa o Algoritmo de Kahn para realizar a Ordenação Topológica, processando os vértices com base em seus graus de entrada para gerar uma sequência linear e perfeitamente viável de produção para a equipe.
+
+## 6) Módulo 6: Menu Degustação VIP (Programação Dinâmica)
+Utiliza a lógica do Problema da Mochila (Knapsack 0/1).
+O objetivo é gerar um menu especial que maximize um critério de interesse (como lucro esperado ou avaliação) sob uma restrição severa de tempo total ou orçamento máximo. Diferente de uma abordagem Gulosa (que faz escolhas locais e pode falhar em achar o ótimo global), a Programação Dinâmica avalia e preenche uma matriz com subproblemas sobrepostos. O algoritmo decide matematicamente se incluir ou ignorar cada prato maximiza o valor final sem estourar o limite da "mochila".
+
+## 7) Módulo 7: O Pesadelo Logístico (Redes, Infraestrutura e Gargalos)
+7.1) Árvore Geradora Mínima (Algoritmo de Prim):
+O sistema precisa interligar novos pontos operacionais do restaurante criando a menor rede de conexões possível. O algoritmo de Prim avalia o grafo com todos os pontos da cidade e seleciona sequencialmente apenas as rotas de menor custo que conectam os vértices. Isso interliga todo o sistema sem formar ciclos redundantes, minimizando financeiramente o custo total da obra
+
+7.2) Fluxo Máximo (Algoritmo de Ford-Fulkerson / Edmonds-Karp):
+O objetivo é calcular a capacidade máxima de atendimento simultâneo da rede. Utilizando a Busca em Largura (BFS) para encontrar caminhos aumentantes na rede residual, o algoritmo identifica as vias que representam gargalos logísticos entre a cozinha central (fonte) e os clientes finais (sumidouro), indicando onde a operação de entrega fica represada.
+
+## 8) Módulo 8: Laboratório de Inovação do Chef (A e Rotas Dinâmicas)*
+O Módulo 8 foca na exploração de abordagens avançadas para a tomada de decisão logística dentro do restaurante, abordando especificamente o desafio de Navegação em Tempo Real: Encontrar rotas considerando mudanças dinâmicas no ambiente. O problema relevante identificado foi o alto impacto de atrasos nas entregas causados por imprevistos logísticos, como ruas bloqueadas, congestionamentos e áreas temporariamente indisponíveis, que o sistema anterior não conseguia contornar. Para resolver isso, foi modelado o mapa urbano como um Grafo Ponderado, onde cruzamentos e clientes são vértices e as ruas são arestas cujo peso representa o tempo de viagem. A solução funcional foi implementada na Opção 7 do Modo Logística, onde o sistema permite simular bloqueios dinâmicos, desconectando arestas instantaneamente e disparando um novo cálculo de rota de desvio. A decisão de utilizar o algoritmo A* com uma fila de prioridade foi estratégica, pois a inclusão de uma função heurística baseada na distância em linha reta direciona a busca apenas para as direções do destino, descartando rotas ineficientes e permitindo respostas em milissegundos. Como limitação, a heurística atual utiliza coordenadas estáticas e bloqueios de via total, o que abre espaço para melhorias futuras como a integração de APIs de tráfego real ou bloqueios direcionais de trânsito.
 
